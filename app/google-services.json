@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "600156552241",
+    "project_id": "journalapp-83f3d",
+    "storage_bucket": "journalapp-83f3d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600156552241:android:1fdaaa0a87b7fec1b3a910",
+        "android_client_info": {
+          "package_name": "com.arsoft.journalapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApkyWnfU-KoXAaoWFVrmb4T5jce19nwkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600156552241:android:9f2f6f1328c72192b3a910",
+        "android_client_info": {
+          "package_name": "com.arsoftltd.journalapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApkyWnfU-KoXAaoWFVrmb4T5jce19nwkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
