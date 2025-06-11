@@ -1,5 +1,6 @@
 package com.arsoft.journalapp;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,11 +9,15 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -44,6 +49,8 @@ public class AddJournalActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser user;
 
+    // Using Activity Result Launcher
+    ActivityResultLauncher<String> mTakePhoto;
 
 
     @Override
@@ -75,15 +82,26 @@ public class AddJournalActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                SaveJournal();
             }
         });
 
+        mTakePhoto = registerForActivityResult(
+                new ActivityResultContracts.GetContent(),
+                new ActivityResultCallback<Uri>() {
+                    @Override
+                    public void onActivityResult(Uri o) {
+                        // Showing the image
+                        imageView.setImageURI(o);
+                    }
+                }
+        );
 
         addPhotoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // Getting image from Gallery
+                mTakePhoto.launch("image/*");
             }
         });
 
@@ -92,6 +110,8 @@ public class AddJournalActivity extends AppCompatActivity {
 
 
 
+    }
 
+    private void SaveJournal() {
     }
 }

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -49,6 +50,7 @@ public class JournalListActivity extends AppCompatActivity {
 
     // RecyclerView
     private RecyclerView recyclerView;
+    private FloatingActionButton fab;
     private MyAdapter myAdapter;
 
 
@@ -68,10 +70,17 @@ public class JournalListActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        fab = findViewById(R.id.fab);
+
+
         //Posts Arraylist
         journalList = new ArrayList<>();
 
 
+        fab.setOnClickListener(v -> {
+            Intent i = new Intent(JournalListActivity.this, AddJournalActivity.class);
+            startActivity(i);
+        });
 
     }
 
@@ -110,6 +119,10 @@ public class JournalListActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        // Clear the list before fetching new data
+        journalList.clear();
+
         collectionReference.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
