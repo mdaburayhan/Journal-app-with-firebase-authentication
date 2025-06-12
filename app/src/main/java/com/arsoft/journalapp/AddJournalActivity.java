@@ -85,11 +85,7 @@ public class AddJournalActivity extends AppCompatActivity {
         // Auth
         firebaseAuth = FirebaseAuth.getInstance();
 
-        // Getting the Current User
-        if (user != null){
-            currentUserId = user.getUid();
-            currentUserName = user.getDisplayName();
-        }
+
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -206,6 +202,12 @@ public class AddJournalActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         user = firebaseAuth.getCurrentUser();
+
+        // Getting the Current User
+        if (user != null){
+            currentUserId = user.getUid();
+            currentUserName = user.getDisplayName();
+        }
 
     }
 }
